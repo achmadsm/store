@@ -5,6 +5,7 @@ import 'package:store/common/styles.dart';
 import 'package:store/provider/page_provider.dart';
 import 'package:store/ui/pages/dashboard_page.dart';
 import 'package:store/ui/pages/profile_page.dart';
+import 'package:store/ui/pages/search_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -18,6 +19,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final List<Widget> _listPage = [
     const DashboardPage(),
+    SearchPage(),
     const ProfilePage(),
   ];
 
@@ -25,6 +27,10 @@ class _HomePageState extends State<HomePage> {
     const BottomNavigationBarItem(
       icon: Icon(Icons.home_rounded),
       label: DashboardPage.dashboardTitle,
+    ),
+    const BottomNavigationBarItem(
+      icon: Icon(Icons.search_rounded),
+      label: SearchPage.searchTitle,
     ),
     const BottomNavigationBarItem(
       icon: Icon(CupertinoIcons.profile_circled),

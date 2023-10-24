@@ -7,6 +7,7 @@ import 'package:store/provider/auth_provider.dart';
 import 'package:store/provider/page_provider.dart';
 import 'package:store/provider/product_provider.dart';
 import 'package:store/provider/profile_provider.dart';
+import 'package:store/provider/search_provider.dart';
 import 'package:store/ui/pages/home_page.dart';
 import 'package:store/ui/pages/log_in_page.dart';
 import 'package:store/ui/pages/splash_page.dart';
@@ -33,7 +34,10 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (context) => ProductProvider(ApiService()),
-        )
+        ),
+        ChangeNotifierProvider(
+          create: (context) => SearchProvider(ApiService()),
+        ),
       ],
       child: MaterialApp(
         theme: ThemeData(scaffoldBackgroundColor: kBackgroundColor),
