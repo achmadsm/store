@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:store/common/styles.dart';
 import 'package:store/provider/auth_provider.dart';
-import 'package:store/ui/pages/profile_page.dart';
+import 'package:store/ui/pages/home_page.dart';
 import 'package:store/ui/widgets/custom_button.dart';
 import 'package:store/ui/widgets/custom_text_form_field.dart';
 import 'package:store/utils/password_validator.dart';
@@ -64,7 +64,7 @@ class LogInPage extends StatelessWidget {
 
         void navigation() {
           Navigator.pushNamedAndRemoveUntil(
-              context, ProfilePage.routeName, (route) => false);
+              context, HomePage.routeName, (route) => false);
         }
 
         return context.watch<AuthProvider>().isLoggedIn

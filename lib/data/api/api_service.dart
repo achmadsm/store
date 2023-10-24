@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:store/data/model/product.dart';
 import 'package:store/data/model/user.dart';
 
 class ApiService {
@@ -22,6 +23,16 @@ class ApiService {
       return User.fromJson(json.decode(response.body));
     } else {
       throw Exception('Invalid username or Password');
+    }
+  }
+
+  Future<ProductResult> products() async {
+    final response = await http.get(Uri.parse('$_baseUrl/products'));
+
+    if (response.statusCode == 200) {
+      return ProductResult.fromJson(json.decode(response.body));
+    } else {
+      throw Exception('Failed to load products');
     }
   }
 }

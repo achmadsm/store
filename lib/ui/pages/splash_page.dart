@@ -3,8 +3,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:store/common/styles.dart';
 import 'package:store/data/db/auth_repository.dart';
+import 'package:store/ui/pages/home_page.dart';
 import 'package:store/ui/pages/log_in_page.dart';
-import 'package:store/ui/pages/profile_page.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -31,7 +31,7 @@ class _SplashPageState extends State<SplashPage> {
               context, LogInPage.routeName, (route) => false);
         } else {
           Navigator.pushNamedAndRemoveUntil(
-              context, ProfilePage.routeName, (route) => false);
+              context, HomePage.routeName, (route) => false);
         }
       },
     );

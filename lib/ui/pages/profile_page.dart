@@ -10,7 +10,7 @@ import 'package:store/utils/result_state.dart';
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
 
-  static const routeName = '/profile_page';
+  static const profileTitle = 'Profile';
 
   @override
   Widget build(BuildContext context) {

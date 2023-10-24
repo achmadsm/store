@@ -4,9 +4,11 @@ import 'package:store/common/styles.dart';
 import 'package:store/data/api/api_service.dart';
 import 'package:store/data/db/auth_repository.dart';
 import 'package:store/provider/auth_provider.dart';
+import 'package:store/provider/page_provider.dart';
+import 'package:store/provider/product_provider.dart';
 import 'package:store/provider/profile_provider.dart';
+import 'package:store/ui/pages/home_page.dart';
 import 'package:store/ui/pages/log_in_page.dart';
-import 'package:store/ui/pages/profile_page.dart';
 import 'package:store/ui/pages/splash_page.dart';
 
 void main() {
@@ -26,13 +28,19 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (context) => ProfileProvider(AuthRepository()),
         ),
+        ChangeNotifierProvider(
+          create: (context) => PageProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => ProductProvider(ApiService()),
+        )
       ],
       child: MaterialApp(
         theme: ThemeData(scaffoldBackgroundColor: kBackgroundColor),
         routes: {
           SplashPage.routeName: (context) => const SplashPage(),
           LogInPage.routeName: (context) => LogInPage(),
-          ProfilePage.routeName: (context) => const ProfilePage(),
+          HomePage.routeName: (context) => const HomePage(),
         },
       ),
     );
