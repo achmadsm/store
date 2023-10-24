@@ -7,17 +7,24 @@ import 'package:store/ui/pages/log_in_page.dart';
 import 'package:store/ui/widgets/custom_button.dart';
 import 'package:store/utils/result_state.dart';
 
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
 
   static const profileTitle = 'Profile';
 
   @override
-  Widget build(BuildContext context) {
-    void navigation(String routeName) {
-      Navigator.pushNamedAndRemoveUntil(context, routeName, (route) => false);
-    }
+  State<ProfilePage> createState() => _ProfilePageState();
+}
 
+class _ProfilePageState extends State<ProfilePage> {
+  @override
+  void initState() {
+    Provider.of<ProfileProvider>(context, listen: false).profile();
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
         child: Consumer<ProfileProvider>(
@@ -47,7 +54,7 @@ class ProfilePage extends StatelessWidget {
                       final authRead = context.read<AuthProvider>();
                       final result = await authRead.logout();
                       if (result) {
-                        navigation(LogInPage.routeName);
+                        navigation();
                       }
                     },
                   ),
@@ -58,5 +65,10 @@ class ProfilePage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void navigation() {
+    Navigator.pushNamedAndRemoveUntil(
+        context, LogInPage.routeName, (route) => false);
   }
 }

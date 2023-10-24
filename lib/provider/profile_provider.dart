@@ -5,9 +5,7 @@ import 'package:store/utils/result_state.dart';
 class ProfileProvider extends ChangeNotifier {
   final AuthRepository authRepository;
 
-  ProfileProvider(this.authRepository) {
-    _profile();
-  }
+  ProfileProvider(this.authRepository);
 
   String _name = '';
 
@@ -21,7 +19,7 @@ class ProfileProvider extends ChangeNotifier {
 
   ResultState get state => _state;
 
-  Future<void> _profile() async {
+  Future<void> profile() async {
     _state = ResultState.loading;
     notifyListeners();
 
@@ -37,6 +35,7 @@ class ProfileProvider extends ChangeNotifier {
       _image = image;
     }
 
+    debugPrint(_name);
     _state = ResultState.hasData;
     notifyListeners();
   }
